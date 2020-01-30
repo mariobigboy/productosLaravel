@@ -12,12 +12,14 @@
             <h1>Products</h1>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card-header">
+                    <div class="card">
+                        <div class="card-header">
                         Products List
-                        <a href="#" class="btn btn-success btn-sm float-right">New Product</a>
+                        <a href="{{route('products.create')}}" class="btn btn-success btn-sm float-right">New Product</a>
                     </div>
                     <div class="card-body">
-                        
+                        ...
+                    </div>
                     </div>
 
                 </div>
