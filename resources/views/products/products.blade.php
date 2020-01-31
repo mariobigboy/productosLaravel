@@ -18,12 +18,33 @@
                         <a href="{{route('products.create')}}" class="btn btn-success btn-sm float-right">New Product</a>
                     </div>
                     <div class="card-body">
-                        @if(session('inf'))
-                        <div class="alert alert success"> {{session('info')}}</div>
+                        @if(session('info'))
+                            <div class="alert alert-success"> 
+                                 {{session('info')}}
+                            </div>
+                        @endif
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </thead>
+                            <tbody>
+                                @foreach($products as $product)
+                                <tr>
+                                    <td>
+                                        {{$product->description}}
+
+                                    </td>
+                                    <td>
+                                        {{$product->price}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+
+                        </table>
                            
-                        @endif
-                            
-                        @endif
+                       
                     </div>
                     </div>
 

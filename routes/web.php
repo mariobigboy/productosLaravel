@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use App\Product;
 
 Route::get('/', function () {
-    return view('products.products');
+    $products = Product::orderBy('description')->get();
+    return view('products.products', compact('products'));
 })->name('products.index');
 
 Route::get('/create', function(){
