@@ -40,11 +40,13 @@
                                         {{$product->price}}
                                     </td>
                                     <td>
+                                        <a href="{{route('products-edit', $product->id)}}" class="btn btn-warning btn-sm">Editar</a>
                                         <a onclick="javastript: document.getElementById('delete-{{$product->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
                                         <form id="delete-{{$product->id}}" action="{{route('product-destroy', $product->id)}}" method="POST">
                                             @method('delete')
                                             @csrf
                                         </form>
+                                        
                                     </td>
                                 </tr>
                                 @endforeach
