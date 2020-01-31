@@ -27,6 +27,7 @@
                             <thead>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
                                 @foreach($products as $product)
@@ -37,6 +38,13 @@
                                     </td>
                                     <td>
                                         {{$product->price}}
+                                    </td>
+                                    <td>
+                                        <a onclick="javastript: document.getElementById('delete-{{$product->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
+                                        <form id="delete-{{$product->id}}" action="{{route('product-destroy', $product->id)}}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
