@@ -18,7 +18,12 @@
                         <a href="{{route('products.create')}}" class="btn btn-success btn-sm float-right">New Product</a>
                     </div>
                     <div class="card-body">
-                        ...
+                        @if(session('inf'))
+                        <div class="alert alert success"> {{session('info')}}</div>
+                           
+                        @endif
+                            
+                        @endif
                     </div>
                     </div>
 
