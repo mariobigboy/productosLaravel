@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use App\Product;
 
 Route::get('/', function () {
-    return view('products.products');
+    $products = Product::orderBy('description')->get();
+    return view('products.products', compact('products'));
 })->name('products.index');
 
 Route::get('/create', function(){
@@ -17,5 +18,11 @@ Route::post('products', function(Request $request){
     $newProduct->description = $request->input('description');
     $newProduct->price = $request->input('price');
     $newProduct->save();
-    return redirect()->route('products.index');
+    return redirect()->route('products.index')->with('info','Producto guardado correctamente!');
 })->name('products.store');
+
+Route::delete('products/{id}', function($id){
+    $product = Product::findOrFail($id);
+    $product->delete();
+    return redirect()->route('products.index')->with('info','Producto Eliminado exitosamente');
+})->name('product-destroy');
