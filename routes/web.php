@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use App\Product;
-
-Route::get('/', function () {
+Route::middleware('auth')->group(function(){
+    Route::get('/', function () {
     $products = Product::orderBy('description')->get();
     return view('products.products', compact('products'));
 })->name('products.index');
@@ -40,3 +40,7 @@ Route::put('/productos/{id}', function(Request $request, $id){
     $product->save();
     return redirect()->route('products.index')->with('info','Product Updated!');
 })->name('products.update');
+});
+
+
+Auth::routes();
